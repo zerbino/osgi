@@ -11,10 +11,8 @@ public class Machine implements IMachine {
 	
 	private boolean breakdown = false;
 
-	public Machine(String id, Machine voisinGauche, Machine voisinDroit) {
+	public Machine(String id) {
 		super();
-		this.voisinGauche = voisinGauche;
-		this.voisinDroit = voisinDroit;
 		this.id = id;
 	}
 	
@@ -113,6 +111,20 @@ public class Machine implements IMachine {
 	public Machine getVoisinDroit() {
 		return this.voisinDroit;
 	}
+	
+	
+
+	public void setVoisinGauche(Machine voisinGauche) {
+		this.voisinGauche = voisinGauche;
+	}
+
+
+
+	public void setVoisinDroit(Machine voisinDroit) {
+		this.voisinDroit = voisinDroit;
+	}
+
+
 
 	@Override
 	public void calcul() {
