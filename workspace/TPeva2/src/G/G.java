@@ -3,15 +3,17 @@ package G;
 import java.rmi.*;
 import java.rmi.registry.*;
 import java.rmi.server.*;
+import java.util.HashMap;
 import java.util.LinkedList;
 
 import machines.IMachine;
+import machines.Machine;
 
 public class G implements IG{
-	private LinkedList<IMachine> machines = new LinkedList<IMachine>();
+	private HashMap<String,IMachine> machines=new HashMap<String,IMachine>();
 
 	public void addMachines(IMachine c)  throws RemoteException{
-		machines.add(c);
+		machines.put(c.getId(), c);
 		System.out.println("Machine added: " + c);
 	}
 	public static void main(String[] args) throws RemoteException{
@@ -27,6 +29,22 @@ public class G implements IG{
 			Registry registry = LocateRegistry.getRegistry();
 			registry.rebind(name, stub);
 			System.out.println("Ring system bound");
+			Machine m1=new Machine("m1");
+			Machine m2=new Machine("m2");
+			Machine m3=new Machine("m3");
+			Machine m4=new Machine("m4");
+			m1.setVoisinGauche(m4);
+			m1.setVoisinDroit(m2);
+			m2.setVoisinGauche(m1);
+			m2.setVoisinDroit(m3);
+			m3.setVoisinGauche(m2);
+			m3.setVoisinDroit(m4);
+			m4.setVoisinGauche(m3);
+			m4.setVoisinDroit(m1);
+			monG.addMachines(m1);
+			monG.addMachines(m2);
+			monG.addMachines(m3);
+			monG.addMachines(m4);
 		} catch (Exception e) {
 			System.err.println("Ring system exception:");
 			e.printStackTrace();
@@ -50,34 +68,23 @@ public class G implements IG{
 		}
 		 */
 	}
-	public LinkedList<IMachine> getMachines() {
-		return machines;
-	}
-
-	public void setMachines(LinkedList<IMachine> machines) {
-		this.machines = machines;
-	}
 
 	@Override
 	public void notifPanne(String idVoisin) {
-		for(IMachine m:machines){
-			if(m.getId().equals(idVoisin)){
+		IMachine m=machines.get(idVoisin);
+			if(m!=null){
 				m.getVoisinGauche().recevoirNotifPanne(idVoisin);
 				m.getVoisinDroit().recevoirNotifPanne(idVoisin);
-				break;
 			}
-		}
 	}
 
 	@Override
 	public void notifRepar(String idVoisin) {
-		for(IMachine m:machines){
-			if(m.getId().equals(idVoisin)){
+		IMachine m=machines.get(idVoisin);
+		if(m!=null){
 				m.getVoisinGauche().recevoirNotifPanne(idVoisin);
 				m.getVoisinDroit().recevoirNotifPanne(idVoisin);
-				break;
 			}
 		}
-	}
 
 }
