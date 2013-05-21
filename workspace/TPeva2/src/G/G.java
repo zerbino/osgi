@@ -60,6 +60,7 @@ public class G implements IG{
 			if(m!=null){
 				m.getVoisinGauche().recevoirNotifPanne(idVoisin);
 				m.getVoisinDroit().recevoirNotifPanne(idVoisin);
+				notifRepar(idVoisin);
 			}
 	}
 
@@ -67,8 +68,9 @@ public class G implements IG{
 	public void notifRepar(String idVoisin) {
 		IMachine m=machines.get(idVoisin);
 		if(m!=null){
-				m.getVoisinGauche().recevoirNotifPanne(idVoisin);
-				m.getVoisinDroit().recevoirNotifPanne(idVoisin);
+				m.reparation();
+				m.getVoisinGauche().recevoirNotifRepar(idVoisin);
+				m.getVoisinDroit().recevoirNotifRepar(idVoisin);
 			}
 		}
 
