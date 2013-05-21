@@ -1,0 +1,3 @@
+grant codeBase "file:C:/Users/Kevin/Desktop/workspace/RMI/RMI_mini_project/workspace/chat/client/-" {
+    permission java.security.AllPermission;
+};
