@@ -1,0 +1,1 @@
+java -cp E:\Marti\cours\workspace\RMIChat\workspace\Chaton\bin\server\Chat.jar -Djava.rmi.server.codebase=file:E:/Marti/cours/workspace/RMIChat/workspace/Chaton/bin/client -Djava.security.policy=client.policy client.Client
