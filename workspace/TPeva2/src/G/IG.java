@@ -9,5 +9,5 @@ public interface IG extends Remote{
 
 	public void notifRepar(String idVoisin);
 	
-	public void addMachines(IMachine c);
+	public void addMachines(IMachine c) throws RemoteException;
 }

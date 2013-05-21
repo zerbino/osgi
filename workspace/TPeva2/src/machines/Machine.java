@@ -128,6 +128,7 @@ public class Machine implements IMachine {
 
 	@Override
 	public void calcul() {
+		this.panne();
 		if(!breakdown){
 			if(!this.isVoisinDroitBreakdown()){
 				this.voisinDroit.calcul();
@@ -136,6 +137,10 @@ public class Machine implements IMachine {
 				this.voisinGauche.calcul();
 			}
 		}
+		
+	}
+	
+	public static void main(String[] args) {
 		
 	}
 

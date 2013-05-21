@@ -29,22 +29,7 @@ public class G implements IG{
 			Registry registry = LocateRegistry.getRegistry();
 			registry.rebind(name, stub);
 			System.out.println("Ring system bound");
-			Machine m1=new Machine("m1");
-			Machine m2=new Machine("m2");
-			Machine m3=new Machine("m3");
-			Machine m4=new Machine("m4");
-			m1.setVoisinGauche(m4);
-			m1.setVoisinDroit(m2);
-			m2.setVoisinGauche(m1);
-			m2.setVoisinDroit(m3);
-			m3.setVoisinGauche(m2);
-			m3.setVoisinDroit(m4);
-			m4.setVoisinGauche(m3);
-			m4.setVoisinDroit(m1);
-			monG.addMachines(m1);
-			monG.addMachines(m2);
-			monG.addMachines(m3);
-			monG.addMachines(m4);
+			
 		} catch (Exception e) {
 			System.err.println("Ring system exception:");
 			e.printStackTrace();
