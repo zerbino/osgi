@@ -1,6 +1,7 @@
 package G;
 
-public interface IG {
+import java.rmi.*;
+public interface IG extends Remote{
 
 	public void notifPanne(String idVoisin);
 

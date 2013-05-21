@@ -1,6 +1,8 @@
 package G;
 
-import java.rmi.RemoteException;
+import java.rmi.*;
+import java.rmi.registry.*;
+import java.rmi.server.*;
 import java.util.LinkedList;
 
 import machines.IMachine;
@@ -17,16 +19,16 @@ public class G implements IG{
 		//	System.setSecurityManager(new SecurityManager());
 		//}
 		try {
-			String name = "ServerChat";
-			Chat monChat = new Chat();
+			String name = "G";
+			G monG = new G();
 			// on enregistre le server/service dans l'annuaire
-			IChat stub = (IChat) UnicastRemoteObject.exportObject(monChat, 0);
+			IG stub = (IG) UnicastRemoteObject.exportObject(monG, 0);
 			// mettre IChat
 			Registry registry = LocateRegistry.getRegistry();
 			registry.rebind(name, stub);
-			System.out.println("Chat bound");
+			System.out.println("Ring system bound");
 		} catch (Exception e) {
-			System.err.println("Chat server exception:");
+			System.err.println("Ring system exception:");
 			e.printStackTrace();
 		}
 		/*
