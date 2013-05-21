@@ -127,7 +127,7 @@ public class Machine implements IMachine {
 	}
 
 	public static void main(String[] args) {
-		try {
+		try { 
 			String name = "G";
 			Registry registry = LocateRegistry.getRegistry();
 			IG monG = (IG) registry.lookup(name);

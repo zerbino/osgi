@@ -1,1 +1,1 @@
-java -cp "E:\Marti\cours\workspace\RMIChat\workspace\OSGI note\src";E:\Marti\cours\workspace\OSGI note\workspace\TPeva2\src\jar.jar -Djava.rmi.server.codebase=file:E:/Marti/cours/workspace/RMIChat/workspace/OSGI note/bin/ -Djava.security.policy=server.policy server.G
+java -cp "E:\Marti\cours\workspace\RMIChat\workspace\OSGI note\src\";"E:\Marti\cours\workspace\OSGI note\workspace\TPeva2\src\jar.jar" -Djava.rmi.server.codebase=file:E:/Marti/cours/workspace/RMIChat/workspace/OSGI note/bin/ -Djava.security.policy=server.policy server.G
