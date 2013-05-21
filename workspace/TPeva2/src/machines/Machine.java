@@ -16,9 +16,10 @@ public class Machine implements IMachine {
 
 	private boolean breakdown = false;
 
-	public Machine(String id) {
+	public Machine(String id, IG controleur) {
 		super();
 		this.id = id;
+		this.controleur = controleur;
 	}
 
 	public boolean isVoisinGaucheBreakdown() {
@@ -132,10 +133,10 @@ public class Machine implements IMachine {
 			IG monG = (IG) registry.lookup(name);
 			System.out.println("Serveur trouvé");
 
-			Machine m1 = new Machine("m1");
-			Machine m2 = new Machine("m2");
-			Machine m3 = new Machine("m3");
-			Machine m4 = new Machine("m4");
+			Machine m1 = new Machine("m1", monG);
+			Machine m2 = new Machine("m2",monG);
+			Machine m3 = new Machine("m3",monG);
+			Machine m4 = new Machine("m4",monG);
 			m1.setVoisinGauche(m4);
 			m1.setVoisinDroit(m2);
 			IMachine stub1 = (IMachine) UnicastRemoteObject.exportObject(m1, 2);
